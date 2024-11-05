@@ -6,7 +6,7 @@ using UnityEngine.Scripting;
 public class Enemy : Entity
 {
 
-    [SerializeField] protected LayerMask playerLayer;
+    [SerializeField] protected LayerMask playerLayerMask;
     [Header("Move Info")]
     public float moveSpeed;
     public float idleTime;
@@ -37,7 +37,15 @@ public class Enemy : Entity
 
     public virtual void AnimationFinishTrigger() => stateMachine.currentState.AnimationFinishTrigger();
 
-    public virtual RaycastHit2D IsPlayerDetected() => Physics2D.Raycast(wallCheck.position, Vector2.right * facingDir, playerDetectionRange, playerLayer);
+    public virtual bool IsPlayerDetected()
+    {
+        // Perform a raycast towards the player and check for any hits on the player or wall layers
+        RaycastHit2D hit = Physics2D.Raycast(wallCheck.position, Vector2.right * facingDir, playerDetectionRange, playerLayerMask | groundLayerMask);
+
+        // Return true if the hit object is the player; otherwise, return false
+        return hit.collider != null && hit.collider.gameObject.layer == LayerMask.NameToLayer("Player");
+    }
+
 
     protected override void OnDrawGizmos()
     {

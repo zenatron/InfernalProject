@@ -15143,10 +15143,10 @@ MonoBehaviour:
   groundCheckDistance: 0.5
   wallCheck: {fileID: 1865664339}
   wallCheckDistance: 0.8
-  groundMask:
+  groundLayerMask:
     serializedVersion: 2
     m_Bits: 8
-  playerLayer:
+  playerLayerMask:
     serializedVersion: 2
     m_Bits: 64
   moveSpeed: 2
@@ -17625,7 +17625,7 @@ MonoBehaviour:
   groundCheckDistance: 0.2
   wallCheck: {fileID: 2120588380}
   wallCheckDistance: 0.2
-  groundMask:
+  groundLayerMask:
     serializedVersion: 2
     m_Bits: 8
   attackMovement:
