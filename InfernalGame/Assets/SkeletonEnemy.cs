@@ -7,8 +7,8 @@ public class SkeletonEnemy : Enemy
 
     #region States
     public SkeletonIdleState idleState { get; private set; }
-    public SkeletonMoveState moveState { get; private set; }
-    public SkeletonBattleState battleState { get; private set; }
+    public SkeletonPatrolState patrolState { get; private set; }
+    public SkeletonPursuitState pursuitState { get; private set; }
     public SkeletonAttackState attackState { get; private set; }
     #endregion
 
@@ -17,8 +17,8 @@ public class SkeletonEnemy : Enemy
         base.Awake();
 
         idleState = new SkeletonIdleState(this, stateMachine, "Idle", this);
-        moveState = new SkeletonMoveState(this, stateMachine, "Move", this);
-        battleState = new SkeletonBattleState(this, stateMachine, "Move", this);
+        patrolState = new SkeletonPatrolState(this, stateMachine, "Move", this);
+        pursuitState = new SkeletonPursuitState(this, stateMachine, "Move", this);
         attackState = new SkeletonAttackState(this, stateMachine, "Attack", this);
     }
 

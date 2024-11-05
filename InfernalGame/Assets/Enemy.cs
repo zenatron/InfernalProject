@@ -11,9 +11,11 @@ public class Enemy : Entity
     public float moveSpeed;
     public float idleTime;
 
-    public float battleTime;
+    public float pursuitTime;
+    public float pursuitSpeedMultiplier;
 
     [Header("Attack Info")]
+    public float playerDetectionRange;
     public float attackDistance;
     public float attackCooldown;
     [HideInInspector] public float lastTimeAttacked;
@@ -35,7 +37,7 @@ public class Enemy : Entity
 
     public virtual void AnimationFinishTrigger() => stateMachine.currentState.AnimationFinishTrigger();
 
-    public virtual RaycastHit2D IsPlayerDetected() => Physics2D.Raycast(wallCheck.position, Vector2.right * facingDir, 50f, playerLayer);
+    public virtual RaycastHit2D IsPlayerDetected() => Physics2D.Raycast(wallCheck.position, Vector2.right * facingDir, playerDetectionRange, playerLayer);
 
     protected override void OnDrawGizmos()
     {
@@ -43,5 +45,8 @@ public class Enemy : Entity
 
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(transform.position, transform.position + Vector3.right * facingDir * attackDistance);
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(wallCheck.position, wallCheck.position + Vector3.right * facingDir * playerDetectionRange);
     }
 }

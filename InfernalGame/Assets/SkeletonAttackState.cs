@@ -22,7 +22,7 @@ public class SkeletonAttackState : EnemyState
         enemy.SetZeroVelocity();
 
         if (triggerCalled)
-            stateMachine.ChangeState(enemy.battleState);
+            stateMachine.ChangeState(enemy.pursuitState);
     }
 
     public override void Exit()

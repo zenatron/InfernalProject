@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkeletonMoveState : SkeletonGroundedState
+public class SkeletonPatrolState : SkeletonGroundedState
 {
-    public SkeletonMoveState(Enemy _enemyBase, EnemyStateMachine _stateMachine, string _animBoolName, SkeletonEnemy enemy) : base(_enemyBase, _stateMachine, _animBoolName, enemy)
+    public SkeletonPatrolState(Enemy _enemyBase, EnemyStateMachine _stateMachine, string _animBoolName, SkeletonEnemy enemy) : base(_enemyBase, _stateMachine, _animBoolName, enemy)
     {
 
     }
@@ -25,6 +25,9 @@ public class SkeletonMoveState : SkeletonGroundedState
             enemy.Flip();
             stateMachine.ChangeState(enemy.idleState);
         }
+
+        if (enemy.IsPlayerDetected())
+            stateMachine.ChangeState(enemy.pursuitState);
     }
 
     public override void Exit()
