@@ -11,6 +11,8 @@ public class Entity : MonoBehaviour
 	#endregion
 
     [Header("Collision Info")]
+	public Transform attackCheck;
+	public float attackCheckRadius;
 	[SerializeField] protected Transform groundCheck;
 	[SerializeField] protected float groundCheckDistance;
 	[SerializeField] protected Transform wallCheck;
@@ -35,8 +37,13 @@ public class Entity : MonoBehaviour
 
     }
 
+	public virtual void TakeDamage()
+	{
+		Debug.Log(gameObject.name + " was damaged!");
+	}
+
     #region Velocity
-	public void ZeroVelocity() => rb.velocity = Vector2.zero;
+	public void SetZeroVelocity() => rb.velocity = Vector2.zero;
 
 	public void SetVelocity(float _xVelocity, float _yVelocity)
 	{
@@ -54,6 +61,7 @@ public class Entity : MonoBehaviour
 		Gizmos.color = Color.red;
 		Gizmos.DrawLine(groundCheck.position, groundCheck.position + Vector3.down * groundCheckDistance);
 		Gizmos.DrawLine(wallCheck.position, wallCheck.position + Vector3.right * wallCheckDistance);
+		Gizmos.DrawWireSphere(attackCheck.position, attackCheckRadius);
 	}
 
 	#endregion
