@@ -67,8 +67,7 @@ public class Entity : MonoBehaviour
 	#endregion
 
     #region Flip
-
-
+	
 	public virtual void Flip()
 	{
 		facingDir *= -1;
@@ -84,11 +83,11 @@ public class Entity : MonoBehaviour
 			Flip();
 	}
 
-	public void FacePlayer(Transform _playerTrans)
+	public void FaceEntity(Transform _entityTrans)
 	{
-		if (_playerTrans.position.x > transform.position.x && facingDir < 0)
+		if (_entityTrans.position.x > transform.position.x && facingDir < 0)
 			Flip();
-		else if (_playerTrans.position.x < transform.position.x && facingDir > 0)
+		else if (_entityTrans.position.x < transform.position.x && facingDir > 0)
 			Flip();
 	}
 

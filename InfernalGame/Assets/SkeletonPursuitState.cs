@@ -32,7 +32,7 @@ public class SkeletonPursuitState : EnemyState
         {
 
             // Face player
-            enemy.FacePlayer(player);
+            enemy.FaceEntity(player);
 
             // Check if the player is within attack range
             if (distanceToPlayer > enemy.attackDistance)
