@@ -20,6 +20,10 @@ public class Enemy : Entity
     public float attackCooldown;
     [HideInInspector] public float lastTimeAttacked;
 
+    [Header("Stunned Info")]
+    public float stunnedDuration;
+    public Vector2 stunnedDirection;
+
 
     public EnemyStateMachine stateMachine { get; private set; }
 

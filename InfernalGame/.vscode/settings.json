@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "InfernalGame.sln"
+    "dotnet.defaultSolution": "InfernalGame.sln",
+    "dotnet.preferCSharpExtension": true
 }

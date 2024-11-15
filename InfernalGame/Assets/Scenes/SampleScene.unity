@@ -15099,6 +15099,7 @@ GameObject:
   - component: {fileID: 1656172702}
   - component: {fileID: 1656172703}
   - component: {fileID: 1656172704}
+  - component: {fileID: 1656172705}
   m_Layer: 7
   m_Name: SkeletonEnemy
   m_TagString: Enemy
@@ -15146,6 +15147,8 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  knockbackDir: {x: 6, y: 10}
+  knockbackDuration: 0.1
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -15157,6 +15160,8 @@ MonoBehaviour:
   attackDistance: 2
   attackCooldown: 0.75
   lastTimeAttacked: 0
+  stunnedDuration: 1
+  stunnedDirection: {x: 6, y: 10}
 --- !u!50 &1656172703
 Rigidbody2D:
   serializedVersion: 4
@@ -15172,7 +15177,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 4
+  m_GravityScale: 12
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -15229,6 +15234,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0639701, y: 1.5384204}
   m_EdgeRadius: 0
+--- !u!114 &1656172705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656172700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cedb007bff0600644b46880bc6e7677d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashDuration: 0.2
+  hitMaterial: {fileID: 2100000, guid: c579b313a9e8b1f4a997c77b4277589f, type: 2}
 --- !u!1 &1711578199
 GameObject:
   m_ObjectHideFlags: 0
@@ -17581,6 +17600,7 @@ GameObject:
   - component: {fileID: 1745908817}
   - component: {fileID: 1745908818}
   - component: {fileID: 1745908819}
+  - component: {fileID: 1745908820}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -17628,6 +17648,8 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  knockbackDir: {x: 0, y: 0}
+  knockbackDuration: 0.1
   attackMovement:
   - {x: 2, y: 2}
   - {x: 1, y: 0}
@@ -17699,6 +17721,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &1745908820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745908815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cedb007bff0600644b46880bc6e7677d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashDuration: 0.1
+  hitMaterial: {fileID: 2100000, guid: c579b313a9e8b1f4a997c77b4277589f, type: 2}
 --- !u!1 &1772077759
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,7 +19,7 @@ public class SkeletonAttackState : EnemyState
     {
         base.Update();
 
-        enemy.SetZeroVelocity();
+        //enemy.SetZeroVelocity();
 
         if (triggerCalled)
             stateMachine.ChangeState(enemy.pursuitState);
