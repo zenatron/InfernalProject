@@ -5,8 +5,8 @@ using UnityEngine.Scripting;
 
 public class Enemy : Entity
 {
-
     [SerializeField] protected LayerMask playerLayerMask;
+
     [Header("Move Info")]
     public float moveSpeed;
     public float idleTime;
@@ -23,6 +23,8 @@ public class Enemy : Entity
     [Header("Stunned Info")]
     public float stunnedDuration;
     public Vector2 stunnedDirection;
+    protected bool canBeStunned;
+    [SerializeField] protected GameObject counterAttackImage;
 
 
     public EnemyStateMachine stateMachine { get; private set; }
@@ -37,6 +39,29 @@ public class Enemy : Entity
     {
         base.Update();
         stateMachine.currentState.Update();
+    }
+
+    public virtual void OpenCounterAttackWindow()
+    {
+        canBeStunned = true;
+        counterAttackImage.SetActive(true);
+    }
+
+    public virtual void CloseCounterAttackWindow()
+    {
+        canBeStunned = false;
+        counterAttackImage.SetActive(false);
+    }
+
+    public virtual bool CanBeStunned()
+    {
+        if (canBeStunned)
+        {
+            CloseCounterAttackWindow();
+            return true;
+        }
+
+        return false;
     }
 
     public virtual void AnimationFinishTrigger() => stateMachine.currentState.AnimationFinishTrigger();
