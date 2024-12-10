@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class SkeletonPursuitState : EnemyState
@@ -16,6 +17,9 @@ public class SkeletonPursuitState : EnemyState
         base.Enter();
         stateTimer = enemy.pursuitTime;
         player = GameObject.Find("Player").transform;
+
+        // Enable enraged effect
+        enemy.FlashStatusEffectImage(EnemyStatusEffects.ALERT);
     }
 
     public override void Update()
@@ -58,6 +62,8 @@ public class SkeletonPursuitState : EnemyState
     public override void Exit()
     {
         base.Exit();
+        // Disable enraged effect
+        enemy.ClearStatusEffectImage();
     }
 
     private bool CanAttack()

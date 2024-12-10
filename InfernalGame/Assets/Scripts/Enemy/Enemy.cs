@@ -26,6 +26,11 @@ public class Enemy : Entity
     protected bool canBeStunned;
     [SerializeField] protected GameObject counterAttackImage;
 
+    // Experimental feature
+    [Header("Experimental Feature")]
+    private EnemyStatusEffectHandler statusEffectHandler;
+
+
 
     public EnemyStateMachine stateMachine { get; private set; }
 
@@ -33,6 +38,7 @@ public class Enemy : Entity
     {
         base.Awake();
         stateMachine = new EnemyStateMachine();
+        statusEffectHandler = GetComponent<EnemyStatusEffectHandler>();
     }
 
     protected override void Update()
@@ -44,13 +50,13 @@ public class Enemy : Entity
     public virtual void OpenCounterAttackWindow()
     {
         canBeStunned = true;
-        counterAttackImage.SetActive(true);
+        SetStatusEffectImage(EnemyStatusEffects.CAN_BE_STUNNED);
     }
 
     public virtual void CloseCounterAttackWindow()
     {
         canBeStunned = false;
-        counterAttackImage.SetActive(false);
+        SetStatusEffectImage(EnemyStatusEffects.NONE);
     }
 
     public virtual bool CanBeStunned()
@@ -75,7 +81,6 @@ public class Enemy : Entity
         return hit.collider != null && hit.collider.gameObject.layer == LayerMask.NameToLayer("Player");
     }
 
-
     protected override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
@@ -86,4 +91,58 @@ public class Enemy : Entity
         Gizmos.color = Color.green;
         Gizmos.DrawLine(wallCheck.position, wallCheck.position + Vector3.right * facingDir * playerDetectionRange);
     }
+    
+    #region Status Effect Image Methods
+    public virtual void SetStatusEffectImage(EnemyStatusEffects statusEffect)
+    {
+        if (statusEffectHandler != null)
+        {
+            statusEffectHandler.SetStatusEffectImage(statusEffect);
+        }
+        else
+        {
+            Debug.LogWarning("Status effect handler is null for this enemy");
+            return;
+        }
+    }
+
+    public virtual void FlashStatusEffectImage(EnemyStatusEffects statusEffect)
+    {
+        if (statusEffectHandler != null)
+        {
+            statusEffectHandler.FlashStatusEffectImage(statusEffect);
+        }
+        else
+        {
+            Debug.LogWarning("Status effect handler is null for this enemy");
+            return;
+        }
+    }
+
+    public virtual void ClearStatusEffectImage()
+    {
+        if (statusEffectHandler != null)
+        {
+            statusEffectHandler.ClearStatusEffectImage();
+        }
+        else
+        {
+            Debug.LogWarning("Status effect handler is null for this enemy");
+            return;
+        }
+    }
+
+    public virtual EnemyStatusEffects GetStatusEffectImage()
+    {
+        if (statusEffectHandler != null)
+        {
+            return statusEffectHandler.GetStatusEffectImage();
+        }
+        else
+        {
+            Debug.LogWarning("Status effect handler is null for this enemy");
+            return EnemyStatusEffects.NONE;
+        }
+    }
+    #endregion
 }
