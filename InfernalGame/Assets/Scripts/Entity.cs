@@ -11,6 +11,7 @@ public class Entity : MonoBehaviour
 	public Rigidbody2D rb { get; private set; }
 	public EntityFX fx { get; private set; }
 	public EntityStats stats { get; private set; }
+	public CapsuleCollider2D col { get; private set; }
 	#endregion
 
     [Header("Collision Info")]
@@ -31,6 +32,8 @@ public class Entity : MonoBehaviour
     public int facingDir { get; private set; } = 1;
 	protected bool facingRight = true;
 
+	public System.Action onFlip;
+
     protected virtual void Awake()
     {
 
@@ -41,6 +44,7 @@ public class Entity : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
 		rb = GetComponent<Rigidbody2D>();
 		stats = GetComponent<EntityStats>();
+		col = GetComponent<CapsuleCollider2D>();
     }
     
     protected virtual void Update()
@@ -97,6 +101,7 @@ public class Entity : MonoBehaviour
 		facingDir *= -1;
 		facingRight = !facingRight;
 		transform.Rotate(0, 180, 0);
+		onFlip?.Invoke();
 	}
 
 	public virtual void FlipController(float _x)
@@ -116,4 +121,9 @@ public class Entity : MonoBehaviour
 	}
 
 	#endregion
+
+	public virtual void Die()
+	{
+
+	}
 }

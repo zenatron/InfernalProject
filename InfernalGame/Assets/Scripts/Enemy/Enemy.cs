@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,9 +32,8 @@ public class Enemy : Entity
     private EnemyStatusEffectHandler statusEffectHandler;
 
 
-
     public EnemyStateMachine stateMachine { get; private set; }
-
+    public string lastAnimBoolName { get; private set; }
     protected override void Awake()
     {
         base.Awake();
@@ -69,6 +69,8 @@ public class Enemy : Entity
 
         return false;
     }
+
+    public virtual void SetLastAnimBoolName(string _animBoolName) => lastAnimBoolName = _animBoolName;
 
     public virtual void AnimationFinishTrigger() => stateMachine.currentState.AnimationFinishTrigger();
 

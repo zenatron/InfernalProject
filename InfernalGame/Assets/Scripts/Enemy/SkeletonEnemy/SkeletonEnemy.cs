@@ -11,6 +11,7 @@ public class SkeletonEnemy : Enemy
     public SkeletonPursuitState pursuitState { get; private set; }
     public SkeletonAttackState attackState { get; private set; }
     public SkeletonStunnedState stunnedState { get; private set; }
+    public SkeletonDeadState deadState { get; private set; }
     #endregion
 
     protected override void Awake()
@@ -22,6 +23,7 @@ public class SkeletonEnemy : Enemy
         pursuitState = new SkeletonPursuitState(this, stateMachine, "Move", this);
         attackState = new SkeletonAttackState(this, stateMachine, "Attack", this);
         stunnedState = new SkeletonStunnedState(this, stateMachine, "Stunned", this);
+        deadState = new SkeletonDeadState(this, stateMachine, "Idle", this);
     }
 
     protected override void Start()
@@ -47,5 +49,11 @@ public class SkeletonEnemy : Enemy
         }
 
         return false;
+    }
+
+    public override void Die()
+    {
+        base.Die();
+        stateMachine.ChangeState(deadState);
     }
 }
