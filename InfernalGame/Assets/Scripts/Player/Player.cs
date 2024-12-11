@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Player : Entity
 {
@@ -106,5 +107,6 @@ public class Player : Entity
     {
         base.Die();
 		stateMachine.ChangeState(deadState);
+		SceneManager.LoadSceneAsync("Death Screen");
     }
 }
