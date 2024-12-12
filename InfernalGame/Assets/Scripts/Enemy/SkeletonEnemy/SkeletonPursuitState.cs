@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SkeletonPursuitState : EnemyState
@@ -61,6 +62,20 @@ public class SkeletonPursuitState : EnemyState
                 // Move towards the player
                 int moveDir = (player.position.x > enemy.transform.position.x) ? 1 : -1;
                 enemy.SetVelocity(enemy.moveSpeed * enemy.pursuitSpeedMultiplier * moveDir, rb.velocity.y);
+
+                if (enemy.IsWallDetected() && enemy.CanJump() && enemy.transform.position.y < player.position.y + 4f)
+                {
+                    Debug.Log("Jumping wall detected");
+                    enemy.Jump(1f, 6f);
+                }
+                else if (!enemy.IsGroundDetected() || !enemy.IsWallDetected())
+                {
+                    if (enemy.CanJump() && (enemy.transform.position.y + 1.5f < player.position.y))
+                    {
+                        Debug.Log("Jumping nothing detected");
+                        enemy.Jump(2.5f, 6f);
+                    }
+                }
             }
             else
             {
@@ -73,26 +88,6 @@ public class SkeletonPursuitState : EnemyState
         {
             // Stop pursuing and transition to idle state
             stateMachine.ChangeState(enemy.idleState);
-        }
-    }
-
-
-    protected void AvoidObstacles()
-    {
-        if (enemy.IsWallDetected() && enemy.IsGroundDetected())
-        {
-            enemy.Jump(2f, 6f);
-        }
-        else if (!(enemy.IsGroundDetected() && enemy.IsWallDetected()))
-        {
-            if (enemy.CanJump())
-            {
-                enemy.Jump(5f, 6f);
-            }
-            else
-            {
-                enemy.Flip();
-            }
         }
     }
 }

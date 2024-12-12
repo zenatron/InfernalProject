@@ -594,7 +594,7 @@ MonoBehaviour:
     m_Bits: 64
   moveSpeed: 2
   idleTime: 2
-  pursuitTime: 4
+  pursuitTime: 6
   pursuitSpeedMultiplier: 2
   jumpCheck: {fileID: 5444675234884357629}
   jumpCheckDistance: 0.5
