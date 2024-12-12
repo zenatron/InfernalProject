@@ -75,4 +75,24 @@ public class SkeletonPursuitState : EnemyState
             stateMachine.ChangeState(enemy.idleState);
         }
     }
+
+
+    protected void AvoidObstacles()
+    {
+        if (enemy.IsWallDetected() && enemy.IsGroundDetected())
+        {
+            enemy.Jump(2f, 6f);
+        }
+        else if (!(enemy.IsGroundDetected() && enemy.IsWallDetected()))
+        {
+            if (enemy.CanJump())
+            {
+                enemy.Jump(5f, 6f);
+            }
+            else
+            {
+                enemy.Flip();
+            }
+        }
+    }
 }
