@@ -21,7 +21,7 @@ public class AudioManager : MonoBehaviour
         switch (SceneManager.GetActiveScene().name)
         {
             case "Main Menu":
-                PlayMusic(mainMenu);
+                PlayMusic(mainMenu, true);
                 break;
             case "Win Screen":
                 PlayMusic(win);
@@ -30,14 +30,15 @@ public class AudioManager : MonoBehaviour
                 PlayMusic(lose);
                 break;
             default:
-                PlayMusic(background);
+                PlayMusic(background, true);
                 break;
         }
     }
 
-    public void PlayMusic(AudioClip clip)
+    public void PlayMusic(AudioClip clip, bool loop = true)
     {
         musicSource.clip = clip;
+        musicSource.loop = loop;
         musicSource.Play();
     }
 }
