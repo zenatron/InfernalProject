@@ -179,6 +179,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2556ab76de67c0d439b39918f473fbdd, type: 3}
+--- !u!114 &96623403 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7052822848983671035, guid: 2556ab76de67c0d439b39918f473fbdd, type: 3}
+  m_PrefabInstance: {fileID: 96623402}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 181b85e178628e74ab5d618f22507bb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &113007202
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,6 +290,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.9
+--- !u!82 &116919549 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3576798478911622868, guid: 2556ab76de67c0d439b39918f473fbdd, type: 3}
+  m_PrefabInstance: {fileID: 96623402}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &384968816
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,6 +755,11 @@ Canvas:
   m_SortingLayerID: 1497756945
   m_SortingOrder: 10
   m_TargetDisplay: 0
+--- !u!82 &898024835 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3457802120931184436, guid: 2556ab76de67c0d439b39918f473fbdd, type: 3}
+  m_PrefabInstance: {fileID: 96623402}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1113072777
 GameObject:
   m_ObjectHideFlags: 3
@@ -4401,6 +4422,7 @@ GameObject:
   - component: {fileID: 1745908819}
   - component: {fileID: 1745908820}
   - component: {fileID: 1745908821}
+  - component: {fileID: 1745908822}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -4461,6 +4483,7 @@ MonoBehaviour:
   dashCooldown: 1
   dashSpeed: 25
   dashDuration: 0.25
+  audioManager: {fileID: 96623403}
 --- !u!70 &1745908818
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -4559,6 +4582,28 @@ MonoBehaviour:
     baseValue: 150
     modifiers: 
   currentHealth: 0
+--- !u!114 &1745908822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745908815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 181b85e178628e74ab5d618f22507bb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicSource: {fileID: 898024835}
+  sfxSource: {fileID: 116919549}
+  mainMenu: {fileID: 8300000, guid: 30dd36d9e9d8dc443bbcd45bea0f68e8, type: 3}
+  background: {fileID: 8300000, guid: 59da1262f3a7e4f469cb75a76acae4e7, type: 3}
+  win: {fileID: 8300000, guid: 3b63002b659b68a488473bfb6405a6de, type: 3}
+  lose: {fileID: 8300000, guid: 8a167932ad17c134292827812f746fb6, type: 3}
+  playerHurt: {fileID: 8300000, guid: b43d54a779e18994cb1dcb4d2199bf3c, type: 3}
+  swordSwing: {fileID: 8300000, guid: 79c3736ddb9beff479127b9a0742d863, type: 3}
+  skeletonHurt: {fileID: 8300000, guid: 3482faabfab848b448e3090d80b450d3, type: 3}
+  skeletonDeath: {fileID: 8300000, guid: 98b20f6741a88904d86730e7b289cc5a, type: 3}
 --- !u!1 &1772077759
 GameObject:
   m_ObjectHideFlags: 0

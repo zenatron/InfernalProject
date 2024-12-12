@@ -65,14 +65,12 @@ public class SkeletonPursuitState : EnemyState
 
                 if (enemy.IsWallDetected() && enemy.CanJump() && enemy.transform.position.y < player.position.y + 4f)
                 {
-                    Debug.Log("Jumping wall detected");
                     enemy.Jump(1f, 6f);
                 }
                 else if (!enemy.IsGroundDetected() || !enemy.IsWallDetected())
                 {
-                    if (enemy.CanJump() && (enemy.transform.position.y + 1.5f < player.position.y))
+                    if (enemy.CanJump() && (enemy.transform.position.y + 2f < player.position.y))
                     {
-                        Debug.Log("Jumping nothing detected");
                         enemy.Jump(2.5f, 6f);
                     }
                 }

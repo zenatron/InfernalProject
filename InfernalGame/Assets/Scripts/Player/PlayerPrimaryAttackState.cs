@@ -14,6 +14,8 @@ public class PlayerPrimaryAttackState : PlayerState
 	public override void Enter()
 	{
 		base.Enter();
+
+		player.audioManager.PlaySFX(AudioManager.SFX.SWORD_SWING);
 		
 		xInput = 0; // Reset xInput
 

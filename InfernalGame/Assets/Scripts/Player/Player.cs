@@ -36,6 +36,8 @@ public class Player : Entity
 	public PlayerDeadState deadState { get; private set; }
 	#endregion
 
+	[HideInInspector] public AudioManager audioManager;
+
 	protected override void Awake()
 	{
 		base.Awake();
@@ -55,6 +57,8 @@ public class Player : Entity
 
 
 		deadState = new PlayerDeadState(this, stateMachine, "Die");
+
+		audioManager = GetComponent<AudioManager>();
 	}
 
 	protected override void Start()
