@@ -11,9 +11,10 @@ public class Enemy : Entity
     [Header("Move Info")]
     public float moveSpeed;
     public float idleTime;
-
     public float pursuitTime;
     public float pursuitSpeedMultiplier;
+    [SerializeField] protected Transform jumpCheck;
+	[SerializeField] protected float jumpCheckDistance;
 
     [Header("Attack Info")]
     public float playerDetectionRange;
@@ -70,6 +71,16 @@ public class Enemy : Entity
         return false;
     }
 
+    public virtual bool CanJump() => Physics2D.Raycast(jumpCheck.position, Vector2.down, jumpCheckDistance, groundLayerMask);
+
+    public virtual void Jump(float _xBoost, float _yBoost)
+    {
+        if (CanJump())
+        {
+            rb.velocity = new Vector2(rb.velocity.x * _xBoost, Vector2.Distance(jumpCheck.position, transform.position) * _yBoost);
+        }
+    }
+
     public virtual void SetLastAnimBoolName(string _animBoolName) => lastAnimBoolName = _animBoolName;
 
     public virtual void AnimationFinishTrigger() => stateMachine.currentState.AnimationFinishTrigger();
@@ -92,6 +103,9 @@ public class Enemy : Entity
 
         Gizmos.color = Color.green;
         Gizmos.DrawLine(wallCheck.position, wallCheck.position + Vector3.right * facingDir * playerDetectionRange);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(jumpCheck.position, jumpCheck.position + Vector3.down * jumpCheckDistance);
     }
     
     #region Status Effect Image Methods

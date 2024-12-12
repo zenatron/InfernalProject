@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Entity : MonoBehaviour
@@ -27,7 +28,6 @@ public class Entity : MonoBehaviour
 	[SerializeField] protected Vector2 knockbackDir;
 	[SerializeField] protected float knockbackDuration = 0.1f;
 	protected bool isKnockback;
-
 
     public int facingDir { get; private set; } = 1;
 	protected bool facingRight = true;

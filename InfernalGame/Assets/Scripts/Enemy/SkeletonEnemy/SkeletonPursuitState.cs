@@ -28,11 +28,28 @@ public class SkeletonPursuitState : EnemyState
         // Countdown the pursuit timer
         stateTimer -= Time.deltaTime;
 
+        PursuePlayer();
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+        // Disable enraged effect
+        enemy.ClearStatusEffectImage();
+    }
+
+    private bool CanAttack()
+    {
+        return Time.time >= enemy.lastTimeAttacked + enemy.attackCooldown;
+    }
+
+    protected void PursuePlayer()
+    {
         // Calculate the distance to the player
         float distanceToPlayer = Vector2.Distance(enemy.transform.position, player.position);
 
         // Check if the pursuit should continue or if it should transition to idle
-        if (stateTimer > 0 && distanceToPlayer <= 10)
+        if (stateTimer > 0 && distanceToPlayer <= enemy.playerDetectionRange + 1)
         {
 
             // Face player
@@ -57,17 +74,5 @@ public class SkeletonPursuitState : EnemyState
             // Stop pursuing and transition to idle state
             stateMachine.ChangeState(enemy.idleState);
         }
-    }
-
-    public override void Exit()
-    {
-        base.Exit();
-        // Disable enraged effect
-        enemy.ClearStatusEffectImage();
-    }
-
-    private bool CanAttack()
-    {
-        return Time.time >= enemy.lastTimeAttacked + enemy.attackCooldown;
     }
 }
