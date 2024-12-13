@@ -63,7 +63,7 @@ public class SkeletonPursuitState : EnemyState
                 int moveDir = (player.position.x > enemy.transform.position.x) ? 1 : -1;
                 enemy.SetVelocity(enemy.moveSpeed * enemy.pursuitSpeedMultiplier * moveDir, rb.velocity.y);
 
-                if (enemy.IsWallDetected() && enemy.CanJump() && enemy.transform.position.y < player.position.y + 4f)
+                if (enemy.IsWallDetected() && enemy.CanJump() && enemy.transform.position.y + 2f < player.position.y)
                 {
                     enemy.Jump(1f, 6f);
                 }
