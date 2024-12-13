@@ -54,6 +54,7 @@ public class SkeletonEnemy : Enemy
     public override void Die()
     {
         base.Die();
+        audioManager.PlaySFX(AudioManager.SFX.SKELETON_DEATH);
         stateMachine.ChangeState(deadState);
     }
 }

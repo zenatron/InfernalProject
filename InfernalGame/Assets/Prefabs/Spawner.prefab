@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5344439580618967797
+--- !u!1 &840756245751195673
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,7 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4322963686473983546}
+  - component: {fileID: 950022287801330768}
+  - component: {fileID: 2149935650206107798}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -16,81 +17,34 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4322963686473983546
+--- !u!4 &950022287801330768
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5344439580618967797}
+  m_GameObject: {fileID: 840756245751195673}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.42, y: 22.29, z: -0.13322027}
+  m_LocalPosition: {x: 14.66, y: 22.33, z: -0.063626446}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 941312130082079177}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &2425809646197393513
-PrefabInstance:
+--- !u!114 &2149935650206107798
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 4322963686473983546}
-    m_Modifications:
-    - target: {fileID: 3222892196034300320, guid: 86249367aa6af3643b3fbc6525ab3bab, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3222892196034300320, guid: 86249367aa6af3643b3fbc6525ab3bab, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3222892196034300320, guid: 86249367aa6af3643b3fbc6525ab3bab, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3222892196034300320, guid: 86249367aa6af3643b3fbc6525ab3bab, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3222892196034300320, guid: 86249367aa6af3643b3fbc6525ab3bab, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3222892196034300320, guid: 86249367aa6af3643b3fbc6525ab3bab, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3222892196034300320, guid: 86249367aa6af3643b3fbc6525ab3bab, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3222892196034300320, guid: 86249367aa6af3643b3fbc6525ab3bab, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3222892196034300320, guid: 86249367aa6af3643b3fbc6525ab3bab, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3222892196034300320, guid: 86249367aa6af3643b3fbc6525ab3bab, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6298480468817505412, guid: 86249367aa6af3643b3fbc6525ab3bab, type: 3}
-      propertyPath: m_Name
-      value: SpawnController
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 86249367aa6af3643b3fbc6525ab3bab, type: 3}
---- !u!4 &941312130082079177 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3222892196034300320, guid: 86249367aa6af3643b3fbc6525ab3bab, type: 3}
-  m_PrefabInstance: {fileID: 2425809646197393513}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840756245751195673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7ceb0877bb5b044f9d1821b9474ea5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skeletonEnemyPrefab: {fileID: 6041403880545464521, guid: 3ffe9874f5de47a4da0ae281dbd0075a, type: 3}
+  timerText: {fileID: 0}
+  countdownTime: 300
+  spawnInterval: 20

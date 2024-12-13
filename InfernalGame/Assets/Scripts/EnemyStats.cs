@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyStats : EntityStats
@@ -14,6 +15,7 @@ public class EnemyStats : EntityStats
     public override void TakeDamage(int _damage)
     {
         base.TakeDamage(_damage);
+        enemy.audioManager.PlaySFX(AudioManager.SFX.SKELETON_HURT);
         enemy.DamageEffect();
     }
 

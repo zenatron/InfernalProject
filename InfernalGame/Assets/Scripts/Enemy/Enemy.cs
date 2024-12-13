@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Scripting;
 
 public class Enemy : Entity
@@ -31,6 +32,8 @@ public class Enemy : Entity
     // Experimental feature
     [Header("Experimental Feature")]
     private EnemyStatusEffectHandler statusEffectHandler;
+    [HideInInspector] public AudioManager audioManager;
+
 
 
     public EnemyStateMachine stateMachine { get; private set; }
@@ -38,6 +41,8 @@ public class Enemy : Entity
     protected override void Awake()
     {
         base.Awake();
+        audioManager = GetComponentInChildren<AudioManager>();
+        audioManager.enabled = true;
         stateMachine = new EnemyStateMachine();
         statusEffectHandler = GetComponent<EnemyStatusEffectHandler>();
     }
@@ -46,6 +51,11 @@ public class Enemy : Entity
     {
         base.Update();
         stateMachine.currentState.Update();
+
+        if (transform.position.y < -15)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public virtual void OpenCounterAttackWindow()

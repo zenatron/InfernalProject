@@ -40,6 +40,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic(AudioClip clip, bool loop = false)
     {
+        musicSource.enabled = true;
         musicSource.clip = clip;
         musicSource.loop = loop;
         musicSource.Play();
@@ -55,6 +56,10 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySFX(SFX sfx)
     {
+        if (!sfxSource.enabled)
+        {
+            sfxSource.enabled = true;
+        }
         switch (sfx)
         {
             case SFX.PLAYER_HURT:

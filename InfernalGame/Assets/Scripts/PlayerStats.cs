@@ -14,6 +14,7 @@ public class PlayerStats : EntityStats
     public override void TakeDamage(int _damage)
     {
         base.TakeDamage(_damage);
+        player.audioManager.PlaySFX(AudioManager.SFX.PLAYER_HURT);
         player.DamageEffect();
     }
 

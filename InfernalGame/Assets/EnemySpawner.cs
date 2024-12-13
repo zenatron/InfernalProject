@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -7,7 +8,7 @@ public class EnemySpawner : MonoBehaviour
     private Transform spanwerTransform;
     public TMP_Text timerText;
     public float countdownTime = 300f;
-    public float spawnInterval = 2f;
+    public float spawnInterval = 30f;
 
     private float currentTime;
     private bool canSpawn = true;
@@ -31,6 +32,7 @@ public class EnemySpawner : MonoBehaviour
             if (currentTime <= 0)
             {
                 StopSpawning(); // Stop spawning when the timer ends
+                SceneManager.LoadSceneAsync("Win Screen");
             }
         }
     }

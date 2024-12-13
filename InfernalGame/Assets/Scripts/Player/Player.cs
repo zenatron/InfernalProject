@@ -58,7 +58,7 @@ public class Player : Entity
 
 		deadState = new PlayerDeadState(this, stateMachine, "Die");
 
-		audioManager = GetComponent<AudioManager>();
+		audioManager = GetComponentInChildren<AudioManager>();
 	}
 
 	protected override void Start()

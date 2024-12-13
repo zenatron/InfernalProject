@@ -13,7 +13,6 @@ public class SkeletonDeadState : EnemyState
     public override void Enter()
     {
         base.Enter();
-
         enemy.anim.SetBool(enemy.lastAnimBoolName, true);
         enemy.anim.speed = 0;
         enemy.col.enabled = false;
