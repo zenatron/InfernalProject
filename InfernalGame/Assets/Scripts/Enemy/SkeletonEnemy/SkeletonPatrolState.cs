@@ -32,7 +32,14 @@ public class SkeletonPatrolState : SkeletonGroundedState
     {
         if (enemy.IsWallDetected() && enemy.IsGroundDetected())
         {
-            enemy.Jump(2f, 6f);
+            if (enemy.CanJump())
+            {
+                enemy.Jump(2f, 6f);
+            }
+            else 
+            {
+                enemy.Flip();
+            }
             stateMachine.ChangeState(enemy.idleState);
         }
         else if (enemy.IsGroundDetected() && !enemy.IsWallDetected())
@@ -49,13 +56,12 @@ public class SkeletonPatrolState : SkeletonGroundedState
             if (enemy.CanJump())
             {
                 enemy.Jump(5f, 6f);
-                stateMachine.ChangeState(enemy.idleState);
             }
             else
             {
                 enemy.Flip();
-                stateMachine.ChangeState(enemy.idleState);
             }
+            stateMachine.ChangeState(enemy.idleState);
         }
         else
         {
