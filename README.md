@@ -15,4 +15,4 @@
 - Title Screens & Menus generated with [DALL-E](https://openai.com/index/dall-e-3/)
 
 ## License
-[MIT License]()
+[MIT License](https://github.com/zenatron/InfernalProject/blob/master/LICENSE)
