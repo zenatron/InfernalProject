@@ -1,4 +1,3 @@
-# Infernal Escape
 ## Final Project
 ### ITCS-4236
 #### Philip Vishnevsky
